@@ -9,16 +9,16 @@ from chemdataextractor import Document
 from chemdataextractor.model.units.phospholipid_complex import API, Solvent, CombineRate, Temperature, Time, MolarRatio, EquiMolarRatio
 from chemdataextractor.errors import ReaderError
 
-chosen_model = Time  # API, Solvent, MolarRatio, CombineRate, Temperature, Time
+chosen_model = CombineRate  # API, Solvent, MolarRatio, CombineRate, Temperature, Time
 model_name = chosen_model.__name__
 
 extract_results = {}
 
-for filename in os.listdir('example_articles'):
+for filename in os.listdir('文献'):
     if filename.endswith('.pdf'):
         try:
 
-            with open(os.path.join('example_articles', filename), 'rb') as f:
+            with open(os.path.join('文献', filename), 'rb') as f:
                 doc = Document.from_file(f)
 
             doc.models = [chosen_model]
